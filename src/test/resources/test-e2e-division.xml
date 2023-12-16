@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<calculation>
+    <push value="6" />
+    <push value="2" />
+    <operation value="/" />
+    <result value="3" />
+</calculation>

@@ -32,6 +32,8 @@ public class CalculatorImpl implements Calculator {
                 return Math.sin(Math.toRadians(b));
             case cos:
                 return Math.cos(Math.toRadians(b));
+            case mod:
+                return a % b;
         }
         return 0;
     }

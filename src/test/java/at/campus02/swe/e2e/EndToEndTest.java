@@ -74,4 +74,14 @@ public class EndToEndTest {
         return r;
     }
 
+    @Test
+    public void testE2ERandomTest() throws CalculatorException, XMLStreamException, FileNotFoundException {
+        Calculator calc = new CalculatorImpl();
+        Parser parser = new Parser(calc);
+        double isResult = parser.parse(new File("src/test/resources/test-e2e-random.xml"));
+
+        double expectedResult = getResultOfXMLTestFile(new File("src/test/resources/test-e2e-random.xml"));
+        assertEquals(expectedResult, isResult, 0);
+    }
+
 }

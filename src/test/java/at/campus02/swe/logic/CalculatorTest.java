@@ -116,4 +116,13 @@ public class CalculatorTest {
         }
 
     }
+    @Test
+    public void testRandom() throws Exception {
+        Calculator calc = new CalculatorImpl();
+        calc.push(4);
+        calc.push(7);
+        double result = calc.perform(Operation.random);
+
+        assertEquals(6, result, 0);
+    }
 }

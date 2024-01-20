@@ -2,6 +2,7 @@ package at.campus02.swe.logic;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
@@ -122,5 +123,36 @@ public class CalculatorTest {
         double result = calc.perform(Operation.random);
 
         assertEquals(6, result, 0);
+    }
+    @Test
+    public void testDotProduct() throws Exception {
+        Calculator calc = new CalculatorImpl();
+        calc.push(1);
+        calc.push(3);
+        calc.push(2);
+        calc.push(4);
+        calc.push(2);
+        double result = calc.perform(Operation.dot);
+
+        assertEquals(14, result, 0);
+    }
+    @Test
+    public void testDotProductFail() throws Exception {
+        //Setup
+        Calculator calc = new CalculatorImpl();
+        try {
+            calc.push(1);
+            calc.push(3);
+            calc.push(2);
+            calc.push(4);
+            calc.push(3);
+            double result = calc.perform(Operation.dot);
+
+            fail("Exception expected");
+
+
+        } catch (CalculatorException e) {
+            assertNull(e.getMessage());
+        }
     }
 }

@@ -86,8 +86,8 @@ public class Parser {
             return Operation.mod;
         else if ("random".equals(value))
             return Operation.random;
-        else if ("scalar".equals(value))
-            return Operation.scalar;
+        else if ("dot".equals(value))
+            return Operation.dot;
         else
             throw new CalculatorException("Unsupported Operation!");
         }

@@ -51,8 +51,8 @@ public class CalculatorImpl implements Calculator {
                 b = pop();
                 a = pop();
                 return  new Random(1234).nextInt(a.intValue(),b.intValue());
-            case scalar:
-                return 0;
+            case dot:
+                return calculateDotProduct();
         }
         return 0;
     }
@@ -76,6 +76,20 @@ public class CalculatorImpl implements Calculator {
 
     public static void main(String[] args) {
         System.out.println(new Random(12345).nextInt(4,7));
+    }
+
+    private int calculateDotProduct() throws CalculatorException{
+        int product = 0;
+        int len = (int)pop();
+        int[] vec = new int[len];
+        for (int i = 0; i < len; i++) {
+            vec[i]=(int)pop();
+        }
+        for (int i = 0; i < len; i++) {
+            product += (int)pop() * vec[i];
+        }
+
+        return product;
     }
 
 }

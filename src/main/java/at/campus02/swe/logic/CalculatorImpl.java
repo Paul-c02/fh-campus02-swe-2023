@@ -14,29 +14,45 @@ public class CalculatorImpl implements Calculator {
     @Override
     public double perform(Operation op) throws CalculatorException {
 
-        Double b = pop();
-        Double a = pop();
+        Double b;
+        Double a;
 
         switch (op) {
             case add:
+                b = pop();
+                a = pop();
                 return a + b;
             case sub:
+                b = pop();
+                a = pop();
                 return a - b;
             case div:
+                b = pop();
+                a = pop();
                 double c = a / b;
                 if (Double.isInfinite(c))
                     throw new CalculatorException("Division by zero");
                 return c;
             case mul:
+                b = pop();
+                a = pop();
                 return a * b;
             case sin:
+                b = pop();
                 return Math.sin(Math.toRadians(b));
             case cos:
+                b = pop();
                 return Math.cos(Math.toRadians(b));
             case mod:
+                b = pop();
+                a = pop();
                 return a % b;
             case random:
+                b = pop();
+                a = pop();
                 return  new Random(1234).nextInt(a.intValue(),b.intValue());
+            case scalar:
+                return 0;
         }
         return 0;
     }

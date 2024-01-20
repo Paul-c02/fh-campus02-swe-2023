@@ -68,7 +68,6 @@ public class CalculatorTest {
     public void testSimpleSinOperation() throws Exception {
 
         Calculator calc = new CalculatorImpl();
-        calc.push(0);
         calc.push(90.0);
         double result = calc.perform(Operation.sin);
 
@@ -79,7 +78,6 @@ public class CalculatorTest {
     public void testSimpleCosOperation() throws Exception {
 
         Calculator calc = new CalculatorImpl();
-        calc.push(0);
         calc.push(180.0);
         double result = calc.perform(Operation.cos);
 

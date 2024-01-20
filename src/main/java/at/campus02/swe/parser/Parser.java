@@ -84,11 +84,11 @@ public class Parser {
             return Operation.cos;
         else if ("%".equals(value))
             return Operation.mod;
-        else if ("random".equals(value)) {
+        else if ("random".equals(value))
             return Operation.random;
+        else if ("dot".equals(value))
+            return Operation.dot;
+        else
+            throw new CalculatorException("Unsupported Operation!");
         }
-
-
-        throw new CalculatorException("Unsupported Operation!");
     }
-}

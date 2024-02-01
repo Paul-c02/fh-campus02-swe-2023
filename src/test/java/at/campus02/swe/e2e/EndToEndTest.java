@@ -84,4 +84,14 @@ public class EndToEndTest {
         assertEquals(expectedResult, isResult, 0);
     }
 
+    @Test
+    public void testE2EStoreLoadTest() throws CalculatorException, XMLStreamException, FileNotFoundException {
+        Calculator calc = new CalculatorImpl();
+        Parser parser = new Parser(calc);
+        double isResult = parser.parse(new File("src/test/resources/test-e2e-store_load.xml"));
+
+        double expectedResult = getResultOfXMLTestFile(new File("src/test/resources/test-e2e-store_load.xml"));
+        assertEquals(expectedResult, isResult, 0);
+    }
+
 }

@@ -63,10 +63,6 @@ public class CalculatorImpl implements Calculator {
             case dot:
                 result = calculateDotProduct();
                 return result;
-            case store:
-                store.setStoredValue(result);
-            case load:
-                push(store.getStoredValue());
         }
         return 0;
     }
@@ -88,10 +84,6 @@ public class CalculatorImpl implements Calculator {
         stack_.clear();
     }
 
-    public static void main(String[] args) {
-        System.out.println(new Random(12345).nextInt(4,7));
-    }
-
     private int calculateDotProduct() throws CalculatorException{
         int product = 0;
         int len = (int)pop();
@@ -105,5 +97,12 @@ public class CalculatorImpl implements Calculator {
 
         return product;
     }
+    public void store(double v){
+        store.setStoredValue(v);
+    }
+    public double load(){
+        return store.getStoredValue();
+    }
+
 
 }

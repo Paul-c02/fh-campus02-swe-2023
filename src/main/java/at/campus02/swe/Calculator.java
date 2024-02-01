@@ -13,4 +13,7 @@ public interface Calculator {
     double perform(Operation op) throws CalculatorException;
 
     void clear();
+    void store(double v);
+    double load();
+
 }

@@ -10,6 +10,8 @@ import java.util.Stack;
 public class CalculatorImpl implements Calculator {
 
     private Stack<Double> stack_ = new Stack<Double>();
+    private CalcStore store = new CalcStore();
+    private double result;
 
     @Override
     public double perform(Operation op) throws CalculatorException {
@@ -21,38 +23,50 @@ public class CalculatorImpl implements Calculator {
             case add:
                 b = pop();
                 a = pop();
-                return a + b;
+                result =  a + b;
+                return result;
             case sub:
                 b = pop();
                 a = pop();
-                return a - b;
+                result = a - b;
+                return result;
             case div:
                 b = pop();
                 a = pop();
-                double c = a / b;
-                if (Double.isInfinite(c))
+                result = a / b;
+                if (Double.isInfinite(result))
                     throw new CalculatorException("Division by zero");
-                return c;
+                return result;
             case mul:
                 b = pop();
                 a = pop();
-                return a * b;
+                result = a * b;
+                return result;
             case sin:
                 b = pop();
-                return Math.sin(Math.toRadians(b));
+                result = Math.sin(Math.toRadians(b));
+                return result;
             case cos:
                 b = pop();
-                return Math.cos(Math.toRadians(b));
+                result = Math.cos(Math.toRadians(b));
+                return result;
             case mod:
                 b = pop();
                 a = pop();
-                return a % b;
+                result = a % b;
+                return result;
             case random:
                 b = pop();
                 a = pop();
-                return  new Random(1234).nextInt(a.intValue(),b.intValue());
+                result =  new Random(1234).nextInt(a.intValue(),b.intValue());
+                return result;
             case dot:
-                return calculateDotProduct();
+                result = calculateDotProduct();
+                return result;
+            case store:
+                store.setStoredValue(result);
+            case load:
+                push(store.getStoredValue());
         }
         return 0;
     }

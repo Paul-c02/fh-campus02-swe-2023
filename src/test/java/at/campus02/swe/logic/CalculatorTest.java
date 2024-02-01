@@ -1,14 +1,12 @@
 package at.campus02.swe.logic;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-import static org.junit.Assert.assertNull;
-
 import org.junit.Test;
 
 import at.campus02.swe.Calculator;
 import at.campus02.swe.CalculatorException;
 import at.campus02.swe.Calculator.Operation;
+
+import static org.junit.Assert.*;
 
 public class CalculatorTest {
 
@@ -154,5 +152,27 @@ public class CalculatorTest {
         } catch (CalculatorException e) {
             assertNull(e.getMessage());
         }
+    }
+    @Test
+    public void testLoadFail() throws Exception {
+        //Setup
+        Calculator calc = new CalculatorImpl();
+        assertThrows(NullPointerException.class,
+                ()->{
+                    calc.load("A");
+                });
+
+    }
+    @Test
+    public void testStore() throws Exception {
+        //Setup
+        Calculator calc = new CalculatorImpl();
+        calc.store(1);
+        assertEquals(1.0,calc.load(),0);
+        calc.store("A", 2.1);
+        calc.store("B", 5.7);
+        assertEquals(2.1,calc.load("A"),0);
+        assertEquals(5.7,calc.load("B"),0);
+
     }
 }

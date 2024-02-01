@@ -104,5 +104,14 @@ public class CalculatorImpl implements Calculator {
         return store.getStoredValue();
     }
 
+    public void store(String key,double v){
+        store.setStoredValue(key,v);
+    }
+    public double load(String key){
+        return store.getStoredValue(key);
+    }
+
+
+
 
 }

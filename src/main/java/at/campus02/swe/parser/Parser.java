@@ -47,10 +47,20 @@ public class Parser {
                 result = calc_.perform(readOperation(value));
             } else if ("store".equals(e.asStartElement().getName()
                     .getLocalPart())) {
-                calc_.store(result);
+                if (!value.isEmpty()) {
+                    calc_.store(value,result);
+                } else {
+                    calc_.store(result);
+                }
+
             } else if ("load".equals(e.asStartElement().getName()
                     .getLocalPart())) {
-                result = calc_.load();
+                if (!value.isEmpty()) {
+                    result = calc_.load(value);
+                } else {
+                    result = calc_.load();
+                }
+
             }
         }
 
